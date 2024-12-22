@@ -1,0 +1,338 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{array}
+
+% Set the header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{IYMC 2024 Qualification Round}
+\fancyhead[R]{Solution A}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headsep}{1cm}
+
+\begin{document}
+
+\title{Solution: Problem A}
+\date{}
+\maketitle
+\thispagestyle{fancy}
+
+
+
+\noindent\textbf{The Problem Statement:} \\
+We are given two sequences of numbers:
+
+\[
+\begin{array}{c|cccccc}
+n & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+a_n & 2 & 5 & 10 & 17 & 26 & 37 \\
+b_n & 1 & 2 & 8 & 48 & 384 & 3840
+\end{array}
+\]
+
+The problem states to analyze each sequence, continue the pattern, and find a closed-form (an explicit formula) for the \( n \)-th term of each sequence, \( a_n \) and \( b_n \).
+
+\section*{Detailed solution for Problem A...}
+
+\subsection*{Part 1: Deriving the Formula for $a_n$}
+
+1. \textbf{We inspect the given terms for $a_n$:} \\
+The sequence is:
+\[
+a_1=2,\quad a_2=5,\quad a_3=10,\quad a_4=17,\quad a_5=26,\quad a_6=37.
+\]
+We have six terms. To find a pattern, a common method and my first instinct was to look at the differences between consecutive terms.
+\bigskip
+
+2. \textbf{First Differences \(\Delta a_n\):} \\
+We compute \(\Delta a_n = a_{n+1}-a_n\) for each pair of consecutive terms:
+\[
+a_2 - a_1 = 5 - 2 = 3,\quad a_3 - a_2 = 10 - 5 = 5,\quad a_4 - a_3 = 17 - 10 = 7,\quad a_5 - a_4 = 26 - 17 = 9,\quad a_6 - a_5 = 37 - 26 = 11.
+\]
+
+So the first differences are:
+\[
+\Delta a_n: 3, 5, 7, 9, 11, \dots
+\]
+
+We observe that these differences form an arithmetic progression with a common difference of 2.
+\bigskip
+
+3. \textbf{Second Differences \(\Delta^2 a_n\):} \\
+Now, the second differences are checked which are the differences of the first differences:
+\[
+5-3=2,\quad 7-5=2,\quad 9-7=2,\quad 11-9=2.
+\]
+
+All second differences are constant and equal to 2. A sequence with a constant second difference indicates that \( a_n \) can be expressed as a quadratic polynomial in \( n \).
+
+4. \textbf{We will assume a Quadratic Form:} \\
+Since we have constant second differences, we assume:
+\[
+a_n = A n^2 + B n + C,
+\]
+where \( A, B, C \) are constants we need to determine.
+\bigskip
+
+5. \textbf{Plugging in the known terms:} \\
+Using the first three terms of the sequence (\( a_1, a_2, a_3 \)) to form three equations in terms of \( A, B, C \).
+
+\bigskip
+- For \( n=1 \), \( a_1=2 \):
+\[
+A(1)^2+B(1)+C = A + B + C = 2.
+\]
+So:
+\[
+A + B + C = 2. \quad (1)
+\]
+
+- For \( n=2 \), \( a_2=5 \):
+\[
+A(2^2)+B(2)+C = 4A + 2B + C = 5.
+\]
+So:
+\[
+4A + 2B + C = 5. \quad (2)
+\]
+
+- For \( n=3 \), \( a_3=10 \):
+\[
+A(3^2)+B(3)+C = 9A + 3B + C = 10.
+\]
+So:
+\[
+9A + 3B + C = 10. \quad (3)
+\]
+
+Now we have three linear equations:
+\[
+(1)\; A+B+C=2
+\]
+\[
+(2)\; 4A+2B+C=5
+\]
+\[
+(3)\; 9A+3B+C=10
+\]
+
+6. \textbf{We now solve the system for \( A, B, C \):} \\
+To solve, we eliminate variables step-by-step:
+
+\bigskip
+
+\textbf{Step A: Subtract Equation (1) from Equation (2):} \\
+\((2)-(1)\):
+\[
+(4A+2B+C) - (A+B+C) = 5 - 2.
+\]
+On the left:
+- The \(C\) cancels.
+- \(4A - A = 3A\).
+- \(2B - B = B\).
+On the right: \(5-2=3\).
+
+Thus:
+\[
+3A + B = 3. \quad (4)
+\]
+
+\textbf{Step B: Subtract Equation (1) from Equation (3):} \\
+\((3)-(1)\):
+\[
+(9A+3B+C) - (A+B+C) = 10 - 2.
+\]
+On the left:
+- \(C\) cancels.
+- \(9A - A = 8A\).
+- \(3B - B = 2B\).
+On the right: \(10-2=8\).
+
+We have:
+\[
+8A + 2B = 8. \quad (5)
+\]
+
+\textbf{Step C: Simplify Equation (5):} \\
+Divide (5) by 2:
+\[
+4A + B =4. \quad (6)
+\]
+
+Now compare (4) and (6):
+From (4): \(3A+B=3\).
+From (6): \(4A+B=4\).
+\bigskip
+
+\textbf{Step D: Subtract (4) from (6):} \\
+\[
+(4A+B) - (3A+B)=4 - 3.
+\]
+Left side:
+- \(B\) cancels.
+- \(4A-3A= A\).
+Right side:
+\[
+4-3=1.
+\]
+
+So:
+\[
+A=1.
+\]
+
+With \( A=1 \), substitute into (4) \(3A+B=3\):
+\[
+3(1)+B=3 \implies 3+B=3 \implies B=0.
+\]
+
+Now \( A=1,B=0 \). From (1): \(A+B+C=2\):
+\[
+1+0+C=2 \implies C=1.
+\]
+
+Thus:
+\[
+A=1,\; B=0,\; C=1.
+\]
+
+7. \textbf{Final Quadratic Formula for \( a_n \):} \\
+\[
+a_n = n^2 + 1.
+\]
+
+\[
+\boxed{a_n = n^2 + 1.}
+\]
+
+\subsection*{Part 2: Deriving the Formula for $b_n$}
+
+1. \textbf{We first inspecting the given terms for $b_n$:} \\
+The sequence is:
+\[
+b_1=1,\quad b_2=2,\quad b_3=8,\quad b_4=48,\quad b_5=384,\quad b_6=3840.
+\]
+
+The terms grow very fast which is key hint. We will hendforth look at the ratio of consecutive terms.
+
+\bigskip
+
+2. \textbf{Check Ratios \(\frac{b_{n+1}}{b_n}\):} \\
+Compute:
+\[
+\frac{b_2}{b_1}=\frac{2}{1}=2,\quad \frac{b_3}{b_2}=\frac{8}{2}=4,\quad \frac{b_4}{b_3}= \frac{48}{8}=6,\quad \frac{b_5}{b_4}=\frac{384}{48}=8,\quad \frac{b_6}{b_5}=\frac{3840}{384}=10.
+\]
+
+The ratios are:
+\[
+2,4,6,8,10,\dots
+\]
+
+These ratios form an arithmetic sequence starting at 2 and increasing by 2 each time. The \(k\)-th ratio is \(2k\).
+
+\bigskip
+
+3. \textbf{Constructing $b_n$ using ratios:} \\
+Start with \( b_1=1 \):
+
+- To get \( b_2 \): multiply \( b_1 \) by 2:
+\[
+b_2 = 1\times 2.
+\]
+
+- To get \( b_3 \): multiply \( b_2 \) by 4:
+\[
+b_3 = (1\times 2)\times 4 = 1\times 2\times 4.
+\]
+
+- To get \( b_4 \): multiply \( b_3 \) by 6:
+\[
+b_4 = (1\times 2\times 4)\times 6 = 1\times 2\times 4\times 6.
+\]
+
+- To get \( b_5 \): multiply \( b_4 \) by 8:
+\[
+b_5 = (1\times 2\times 4\times 6)\times 8 = 1\times2\times4\times6\times8.
+\]
+
+\bigskip
+
+4. \textbf{Visualizing the Pattern ("b Triangle"):} \\
+\bigskip
+We arrange factors in a triangular form:
+
+\[
+b_1: \; 1
+\]
+
+\[
+b_2: \; 1 \;\times 2
+\]
+
+\[
+b_3: \; 1 \;\times 2 \;\times 4
+\]
+
+\[
+b_4: \; 1 \;\times 2 \;\times 4 \;\times 6
+\]
+
+\[
+b_5: \; 1 \;\times 2 \;\times 4 \;\times 6 \;\times 8
+\]
+
+Each $b_n$ (for $n>1$) is formed by multiplying together even numbers starting from 2.
+
+\bigskip
+
+5. \textbf{Expressing $b_n$ in General Form:} \\
+For $n>1$:
+\[
+b_n = 1\times 2\times 4\times 6 \times \cdots \times [2(n-1)].
+\]
+
+There are $(n-1)$ even factors. Write them as $2k$:
+\[
+b_n = \prod_{k=1}^{n-1}(2k).
+\]
+
+Factor out 2 from each term:
+\[
+b_n = 2^{n-1}(1\cdot 2 \cdot 3 \cdots (n-1)) = 2^{n-1}(n-1)!.
+\]
+
+Check for a few terms matches perfectly.
+
+\[
+\boxed{b_n = 2^{n-1}(n-1)!}.
+\]
+
+\subsection*{Mathematical concepts involved in Problem A...}
+
+\begin{itemize}
+\item \textbf{Arithmetic Progressions (AP):} Used to identify patterns in the first differences of $a_n$ and the sequence of ratios for $b_n$.
+\item \textbf{Constant Second Differences \& Quadratic Sequences:} For $a_n$, the constant second difference confirmed it can be represented by a quadratic polynomial.
+\item \textbf{Solving Linear Equations:} Found $A,B,C$ for $a_n$ by forming and solving a system of linear equations.
+\item \textbf{Factorials:} To recognize the product pattern for $b_n$ led to a factorial expression $(n-1)!$ and a power of 2.
+\item \textbf{Decomposition into Basic Factors:} For $b_n$, factoring out 2 from every even factor gave a neat closed form.
+\end{itemize}
+
+\subsection*{Final Answers}
+
+\[
+\boxed{a_n = n^2 + 1,\quad b_n = 2^{n-1}(n-1)!.}
+\]
+
+\bigskip
+\noindent\hrulefill
+\begin{center}
+\textbf{************* END OF SOLUTION: A *************}
+\end{center}
+\hrulefill
+
+\end{document}

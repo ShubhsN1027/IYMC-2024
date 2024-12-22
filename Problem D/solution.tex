@@ -1,0 +1,460 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% Set the header style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{IYMC 2024 Qualification Round}
+\fancyhead[R]{Solution D}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Increase vertical space if needed
+\setlength{\headsep}{1cm}
+
+\begin{document}
+
+\title{Solution: Problem D}
+\date{}
+\maketitle
+\thispagestyle{fancy}
+
+
+
+\noindent\textbf{Given Problem:} Prove that $n^5 - n$ is divisible by 5 for all positive integers $n$.
+
+\medskip
+
+\section*{Detailed solution for Problem D...}
+
+\noindent\textbf{Interpretation:} To say an integer $A$ is divisible by 5 means there exists an integer $k$ such that $A = 5k$. In other words, if we perform division of $A$ by 5, the remainder is 0. Our task is to show that for every positive integer $n$, the number $n^5 - n$ leaves no remainder upon division by 5.
+
+\medskip
+
+I will present three distinct methods to prove this fact, ensuring that we understand it from multiple number-theoretic perspectives. Out of all these methods, Solution 2 is my favourite. It is also the shortest:
+
+\medskip
+
+\begin{enumerate}
+   \item \textbf{Solution 1: Direct Verification Using Modular Arithmetic (Residue Classes)}.
+   \item \textbf{Solution 2: Using Fermat's Little Theorem}.
+   \item \textbf{Solution 3: Using Mathematical Induction}.
+\end{enumerate}
+
+Each solution is correct and self-contained, but they illustrate different fundamental techniques.
+
+\medskip
+
+\subsection*{Solution 1: Direct Verification Using Modular Arithmetic}
+
+\noindent\textbf{Concepts Used in this approach:}  
+Modular arithmetic deals with remainders upon division by a given integer. To say $n^5 - n$ is divisible by 5 is to say:
+\[
+n^5 - n \equiv 0 \pmod{5}.
+\]
+This notation means that when we divide $n^5-n$ by 5, the remainder is 0. Equivalently:
+\[
+n^5 \equiv n \pmod{5}.
+\]
+
+\noindent\textbf{Key Idea:}  
+Any integer $n$ can be expressed in the form $n=5q+r$ where $r$ is the remainder when $n$ is divided by 5. The possible values of $r$ are $0,1,2,3,$ or $4$ because these are the only possible remainders when dividing by 5. By checking the congruence $n^5 \equiv n \pmod{5}$ for each of these five possible remainders, we can confirm the statement for all integers $n$.
+
+\medskip
+
+\noindent\textbf{Detailed Steps:}
+
+1. **We shall consider the residue classes modulo 5:**
+
+   Let $n$ be any positive integer. When we divide $n$ by 5, there exist integers $q$ and $r$ such that:
+   \[
+   n = 5q + r,
+   \]
+   where $r \in \{0,1,2,3,4\}$. In modular arithmetic notation, $n \equiv r \pmod{5}$.
+
+\medskip
+
+2. **Case $r=0$:**
+\medskip
+   
+   If $n \equiv 0 \pmod{5}$, this means $n$ is actually a multiple of 5. Specifically, $n=5q$ for some integer $q$.
+   - Compute $n^5$: Since $n=5q$, $n^5=(5q)^5 = 5^5q^5$. This is clearly a multiple of 5 because $5^5q^5$ has a factor of 5.
+   - We also have $n=5q$, which is obviously a multiple of 5.
+   
+\medskip
+
+   Therefore:
+   \[
+   n^5 - n = (5^5q^5) - (5q) = 5(5^4q^5 - q).
+   \]
+   
+   Since we have factored out a 5, $n^5-n$ is divisible by 5. In modulo notation:
+   \[
+   n^5 \equiv 0, \quad n \equiv 0 \pmod{5} \implies n^5-n \equiv 0-0=0 \pmod{5}.
+   \]
+
+3. **Case $r=1$:**
+
+\medskip
+   
+   If $n \equiv 1 \pmod{5}$, then $n=5q+1$ for some integer $q$.
+   - Consider $n^5$: Since we are only interested in the remainder modulo 5, we can use the fact that $1^5=1$. Thus:
+     \[
+     n^5 \equiv 1^5 = 1 \pmod{5}.
+     \]
+   - We also have $n \equiv 1 \pmod{5}$.
+   
+\medskip
+
+   Combining these:
+   \[
+   n^5 - n \equiv 1 - 1 = 0 \pmod{5}.
+   \]
+
+   Hence, in this case, $n^5-n$ is also divisible by 5.
+
+   \bigskip
+
+4. **Case $r=2$:**
+
+\medskip
+   
+   If $n \equiv 2 \pmod{5}$, then:
+   \[
+   n^5 \equiv 2^5 \pmod{5}.
+   \]
+   Compute $2^5=32$. Now, divide 32 by 5: $32=5\cdot6 + 2$, so $32 \equiv 2 \pmod{5}$.
+   
+   Hence:
+   \[
+   n^5 \equiv 2 \pmod{5} \text{ and } n \equiv 2 \pmod{5}.
+   \]
+   Subtracting $n$:
+   \[
+   n^5-n \equiv 2-2=0 \pmod{5}.
+   \]
+
+   Again, divisibility by 5 is confirmed.
+
+   \medskip
+
+5. **Case $r=3$:**
+   
+   If $n \equiv 3 \pmod{5}$:
+   \[
+   n^5 \equiv 3^5 \pmod{5}.
+   \]
+   Compute $3^5=243$. Divide 243 by 5: $243=5\cdot48 + 3$. Thus, $243 \equiv 3 \pmod{5}$.
+   
+   Therefore:
+   \[
+   n^5 \equiv 3 \pmod{5} \text{ and } n \equiv 3 \pmod{5}.
+   \]
+   Hence:
+   \[
+   n^5-n \equiv 3-3=0 \pmod{5}.
+   \]
+
+6. **Case $r=4$:**
+
+\medskip
+   
+   If $n \equiv 4 \pmod{5}$:
+   \[
+   n^5 \equiv 4^5 \pmod{5}.
+   \]
+   Compute $4^5=1024$. Divide 1024 by 5: $1024=5\cdot204+4$, so $1024 \equiv 4 \pmod{5}$.
+   
+   Thus:
+   \[
+   n^5 \equiv 4 \pmod{5} \text{ and } n \equiv 4 \pmod{5}.
+   \]
+   Therefore:
+   \[
+   n^5-n \equiv 4-4=0 \pmod{5}.
+   \]
+
+7. **Conclusion for Solution 1:**
+
+\medskip
+   
+   We have exhaustively checked all possible remainders $r=0,1,2,3,4$ and found that in every case, $n^5-n \equiv 0 \pmod{5}$. This directly shows $n^5-n$ is divisible by 5 for any integer $n$. Since we are particularly interested in positive integers, this result holds true for all $n>0$ as well.
+
+\bigskip
+
+\subsection*{Solution 2: Using Fermat’s Little Theorem}
+
+\noindent\textbf{Concepts Used:}  
+Fermat’s Little Theorem is a powerful result in number theory which states: If $p$ is a prime number and $a$ is an integer not divisible by $p$, then:
+\[
+a^{p-1} \equiv 1 \pmod{p}.
+\]
+
+For $p=5$, this reads:
+\[
+a^4 \equiv 1 \pmod{5} \quad \text{if} \; 5 \nmid a.
+\]
+
+\noindent\textbf{Idea of the Proof:}  
+If $5 \nmid n$, we apply Fermat’s Little Theorem to get $n^4 \equiv 1 \pmod{5}$, then multiply both sides by $n$ to obtain $n^5 \equiv n \pmod{5}$. If $5 \mid n$, the proof is even simpler because $n^5-n$ has an obvious factor of $n$, which has a factor of 5.
+
+\medskip
+
+\noindent\textbf{Detailed Steps:}
+
+1. **Case 1: $5 \mid n$**
+
+\medskip
+   
+   If $5 \mid n$, it means $n=5q$ for some integer $q$. Then:
+   \[
+   n^5-n = (5q)^5 - (5q) = 5( (5q)^4q - q ) = 5(\text{some integer}).
+   \]
+   Thus, if $n$ is a multiple of 5, $n^5-n$ is trivially divisible by 5.
+
+\medskip
+
+2. **Case 2: $5 \nmid n$**
+
+\medskip
+   
+   If $5 \nmid n$, then $\gcd(n,5)=1$. Apply Fermat's Little Theorem with $p=5$:
+   \[
+   n^4 \equiv 1 \pmod{5}.
+   \]
+
+   Now multiply both sides of this congruence by $n$:
+   \[
+   n^5 \equiv n \pmod{5}.
+   \]
+
+   From $n^5 \equiv n \pmod{5}$, we immediately get:
+   \[
+   n^5 - n \equiv 0 \pmod{5}.
+   \]
+
+   This shows that when $5 \nmid n$, $n^5-n$ is divisible by 5.
+
+\medskip
+
+3. **Combine both cases:**
+
+\medskip
+   
+   We have shown:
+   - If $5 \mid n$, then $5 \mid (n^5-n)$.
+   - If $5 \nmid n$, Fermat's Little Theorem ensures $5 \mid (n^5-n)$.
+
+   In all scenarios, $n^5-n$ is divisible by 5.
+
+\bigskip
+
+\subsection*{Solution 3: Using Mathematical Induction}
+
+\noindent\textbf{Concepts Used:}  
+Mathematical induction is a technique to prove that a statement holds for all positive integers by following two steps:
+1. **Base Case:** Show the statement is true for $n=1$.
+2. **Inductive Step:** Assume the statement is true for $n=k$ and then prove it is true for $n=k+1$.
+
+If both steps succeed, the statement is true for all positive integers.
+
+\medskip
+
+\noindent\textbf{We define the Statement:}
+Let us define the property $P(n)$ as:
+\[
+P(n): n^5 - n \text{ is divisible by 5.}
+\]
+
+Our goal is to prove $P(n)$ holds for all $n \in \mathbb{Z}^+$.
+
+\medskip
+
+\noindent\textbf{Detailed Steps:}
+
+\medskip
+
+1. **Base Case $n=1$:**
+\medskip
+   
+   Evaluate $P(1)$:
+   \[
+   1^5 - 1 = 1 - 1 = 0.
+   \]
+   
+   The number 0 is divisible by every nonzero integer, including 5. Thus $P(1)$ is true.
+
+   We have established the property holds for the first positive integer.
+
+\medskip
+
+2. **Inductive Hypothesis:**
+
+\medskip
+   
+   Assume that for some positive integer $k \geq 1$, $P(k)$ is true. This means we assume:
+   \[
+   k^5 - k \text{ is divisible by 5.}
+   \]
+
+   Concretely, there exists an integer $m$ such that:
+   \[
+   k^5 - k = 5m.
+   \]
+
+   This assumption is our "inductive hypothesis." We want to use it to prove $P(k+1)$.
+
+\bigskip
+
+3. **Inductive Step: To prove $P(k+1)$:**
+   
+\medskip
+
+   We must show $P(k+1)$ is true, i.e., we must show $(k+1)^5 - (k+1)$ is divisible by 5.
+
+   Start with $(k+1)^5$. We expand this using the \textbf{Binomial Theorem}:
+   \[
+   (k+1)^5 = k^5 + 5k^4 + 10k^3 + 10k^2 + 5k + 1.
+   \]
+
+   The Binomial Theorem states:
+   \[
+   (x+y)^n = \sum_{i=0}^n \binom{n}{i} x^{n-i}y^i,
+   \]
+   and for $n=5$, $x=k$, $y=1$, we have the binomial coefficients $\binom{5}{0}=1, \binom{5}{1}=5, \binom{5}{2}=10, \binom{5}{3}=10, \binom{5}{4}=5, \binom{5}{5}=1$.
+\medskip
+   Thus:
+   \[
+   (k+1)^5 - (k+1) = (k^5 + 5k^4 + 10k^3 + 10k^2 + 5k + 1) - (k+1).
+   \]
+
+   We then distribute the subtraction of $(k+1)$:
+   \[
+   = k^5 + 5k^4 + 10k^3 + 10k^2 + 5k + 1 - k - 1.
+   \]
+
+   Combining the like terms:
+   - The $+1$ and $-1$ cancel out.
+   - The terms involving $k$ are $5k$ and $-k$, which combine to $4k$.
+
+\medskip
+
+   After simplification, we get:
+   \[
+   (k+1)^5 - (k+1) = k^5 + 5k^4 + 10k^3 + 10k^2 + 4k.
+   \]
+
+   Now, we notice we can rewrite this expression to separate $k^5 - k$ (which we know is divisible by 5 from our inductive hypothesis):
+   \[
+   k^5 - k \text{ appears naturally if we rewrite } 4k \text{ as } 5k - k.
+   \]
+
+   Let's add and subtract $k$ carefully:
+   \[
+   (k+1)^5 - (k+1) = k^5 - k + 5k^4 + 10k^3 + 10k^2 + (5k).
+   \]
+
+   We started with $k^5 + 5k^4 + 10k^3 + 10k^2 + 4k$. To introduce $k^5 - k$, observe:
+   \[
+   k^5 + 5k^4 + 10k^3 + 10k^2 + 4k = (k^5 - k) + (5k^4 + 10k^3 + 10k^2 + 5k) - k.
+   \]
+
+   Actually, an even clearer way:  
+   Since we know $k^5-k$ is divisible by 5, let's isolate it directly:
+   \[
+   (k+1)^5 - (k+1) = (k^5 - k) + 5k^4 + 10k^3 + 10k^2 + 5k.
+   \]
+   
+   How did we do this? Notice that $k^5 - k$ is already part of $k^5 + 4k$. If we rewrite $4k$ as $5k - k$, then:
+   \[
+   k^5 + 4k = (k^5 - k) + 5k.
+   \]
+
+   Substitute this back in:
+   \[
+   (k+1)^5 - (k+1) = k^5 + 5k^4 + 10k^3 + 10k^2 + 4k
+   \]
+   \[
+   = (k^5 - k) + (5k^4 + 10k^3 + 10k^2 + 5k)
+   \]
+   since we replaced $4k$ by $(5k - k)$ and added the $-k$ to $k^5$ giving $k^5 - k$, and the extra $5k$ got absorbed in the bracket with other multiples of 5.
+
+   Now we have:
+   \[
+   (k+1)^5 - (k+1) = (k^5 - k) + 5k^4 + 10k^3 + 10k^2 + 5k.
+   \]
+
+   We know from our inductive hypothesis that $k^5 - k=5m$ for some integer $m$. Also, note that $5k^4$, $10k^3$, $10k^2$, and $5k$ are all obviously multiples of 5 because each term has a factor of 5:
+   - $5k^4 = 5 \cdot k^4$
+   - $10k^3 = 5 \cdot (2k^3)$
+   - $10k^2 = 5 \cdot (2k^2)$
+   - $5k = 5 \cdot k$
+
+   Combining them all:
+   \[
+   (k+1)^5 - (k+1) = 5m + 5k^4 + 10k^3 + 10k^2 + 5k.
+   \]
+
+   We factor out the 5:
+   \[
+   = 5(m + k^4 + 2k^3 + 2k^2 + k).
+   \]
+
+   This is clearly a multiple of 5. Hence, $P(k+1)$ is true.
+
+\medskip
+
+4. **Conclusion of Induction:**
+\medskip
+   
+   We showed:
+   - Base case $P(1)$ is true.
+   - If $P(k)$ is true, then $P(k+1)$ is also true.
+
+   By the principle of mathematical induction, $P(n)$ is true for all positive integers $n$. Thus, for all positive integers $n$, $n^5-n$ is divisible by 5.
+
+\bigskip
+
+\subsection*{Final Conclusion}
+
+All three approaches (direct verification, Fermat’s Little Theorem, and mathematical induction) show that:
+\[
+\boxed{5 \mid (n^5 - n) \text{ for all positive integers } n.}
+\]
+
+This completes the proof.
+
+\bigskip
+
+\subsection*{Mathematical concepts involved in Problem D...}
+
+\begin{itemize}
+   \item \textbf{Modular Arithmetic and Congruences:}  
+   In the first solution, we extensively used the concept of residue classes modulo 5 to directly verify the statement by checking all possible remainders.
+
+   \item \textbf{Case Analysis on Residue Classes:}  
+   By enumerating the cases $r=0,1,2,3,4$, we covered all integers since every integer is congruent to one of these residues modulo 5.
+
+   \item \textbf{Fermat’s Little Theorem:}  
+   In the second solution, we used a deep number-theoretic result that $n^4 \equiv 1 \pmod{5}$ if 5 does not divide $n$. Multiplying by $n$ then gives $n^5 \equiv n \pmod{5}$, neatly proving the divisibility.
+
+   \item \textbf{Mathematical Induction:}  
+   In the third solution, we used the principle of induction to prove the statement holds for all positive integers. This required us to handle the base case and then show that if it holds for $n=k$, it must hold for $n=k+1$. The inductive step leveraged the binomial theorem to express $(k+1)^5$ and identify a factor of 5.
+
+   \item \textbf{Binomial Theorem:}  
+   The binomial theorem was crucial in the induction solution to expand $(k+1)^5$ and identify the structure that allows factoring out 5.
+
+\end{itemize}
+
+\bigskip
+\noindent\hrulefill
+\begin{center}
+\textbf{************* END OF SOLUTION: D *************}
+\end{center}
+\hrulefill
+
+\end{document}

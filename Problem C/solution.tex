@@ -1,0 +1,264 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% Set the header style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{IYMC 2024 Qualification Round}
+\fancyhead[R]{Solution C}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+% The above sets up the page header and footer.
+
+% Increase the vertical space between header and text
+\setlength{\headsep}{1cm}
+
+\begin{document}
+
+\title{Solution: Problem C}
+\date{}
+\maketitle
+\thispagestyle{fancy} % Apply the fancy page style to the title page as well.
+
+
+
+\noindent\textbf{Given Problem:} Determine the numerical value of the following expression without the use of a calculator:
+
+\[
+\left( \sqrt{2} + (3^2)^{\frac{1}{4}} + \sum_{m=1}^{3} \left(\frac{1}{m!} - \sqrt{m}\right) \right) \cdot \left( 2^{\log_2(8)} + \frac{1}{2^3} - \prod_{k=1}^{8}\left(1 + \frac{1}{k}\right) \right).
+\]
+
+We are informed the final answer is \(-\frac{7}{12}\). We will verify this step-by-step, justifying each simplification thoroughly.
+
+% Begin the solution
+\section*{Detailed solution for Problem C...}
+
+1. \textbf{We first rewrite the main expression:}
+\bigskip
+
+   Let
+   \[
+   A = \left(\sqrt{2} + (3^2)^{1/4} + \sum_{m=1}^{3} \left(\frac{1}{m!} - \sqrt{m}\right)\right)
+   \]
+   and
+   \[
+   B = \left(2^{\log_2(8)} + \frac{1}{2^3} - \prod_{k=1}^{8} \left(1 + \frac{1}{k}\right)\right).
+   \]
+
+   Our target is to compute:
+   \[
+   A \times B.
+   \]
+
+2. \textbf{We then simplify \((3^2)^{1/4}\):}
+
+   We have:
+   \[
+   (3^2)^{1/4} = 9^{1/4}.
+   \]
+
+   Since \(9 = 3^2\),
+   \[
+   9^{1/4} = (3^2)^{1/4} = 3^{2/4} = 3^{1/2} = \sqrt{3}.
+   \]
+
+   Therefore:
+   \[
+   (3^2)^{1/4} = \sqrt{3}.
+   \]
+
+3. \textbf{Now, we substitute this into \(A\):}
+
+   Now:
+   \[
+   A = \left(\sqrt{2} + \sqrt{3}\right) + \sum_{m=1}^{3}\left(\frac{1}{m!} - \sqrt{m}\right).
+   \]
+
+
+
+
+   4. \textbf{We evaluate the summation \(\sum_{m=1}^{3}\frac{1}{m!}\):}
+
+   Computing each factorial:
+   \[
+   1! = 1, \quad 2! = 2, \quad 3! = 6.
+   \]
+   Thus:
+   \[
+   \frac{1}{1!} = 1,\quad \frac{1}{2!} = \frac{1}{2},\quad \frac{1}{3!} = \frac{1}{6}.
+   \]
+
+   Summing these:
+   \[
+   1 + \frac{1}{2} + \frac{1}{6}.
+   \]
+
+   Finding a common denominator (6):
+   \[
+   1 = \frac{6}{6}, \quad \frac{1}{2} = \frac{3}{6}, \quad \frac{1}{6}=\frac{1}{6}.
+   \]
+
+   Adding them:
+   \[
+   \frac{6}{6} + \frac{3}{6} + \frac{1}{6} = \frac{6+3+1}{6} = \frac{10}{6} = \frac{5}{3}.
+   \]
+
+   Therefore:
+   \[
+   \sum_{m=1}^{3}\frac{1}{m!} = \frac{5}{3}.
+   \]
+
+5. \textbf{We now evaluate \(\sum_{m=1}^{3}\sqrt{m}\):}
+
+   \[
+   \sqrt{1} = 1, \quad \sqrt{2}=\sqrt{2},\quad \sqrt{3}=\sqrt{3}.
+   \]
+
+   Thus:
+   \[
+   \sum_{m=1}^{3}\sqrt{m} = 1 + \sqrt{2} + \sqrt{3}.
+   \]
+
+6. \textbf{We combine the terms in the summation:}
+
+   We have:
+   \[
+   \sum_{m=1}^{3}\left(\frac{1}{m!} - \sqrt{m}\right) = \sum_{m=1}^{3}\frac{1}{m!} - \sum_{m=1}^{3}\sqrt{m}.
+   \]
+
+   Substitute the values:
+   \[
+   = \frac{5}{3} - (1 + \sqrt{2} + \sqrt{3}).
+   \]
+
+7. \textbf{The substitute back into \(A\):}
+
+   Recall:
+   \[
+   A = (\sqrt{2} + \sqrt{3}) + \left(\frac{5}{3} - (1 + \sqrt{2} + \sqrt{3})\right).
+   \]
+
+   Distribute the subtraction:
+   \[
+   A = (\sqrt{2} + \sqrt{3}) + \frac{5}{3} - 1 - \sqrt{2} - \sqrt{3}.
+   \]
+
+   Combine like terms:
+   \[
+   \sqrt{2} - \sqrt{2} = 0, \quad \sqrt{3} - \sqrt{3} = 0.
+   \]
+
+   All the radicals cancel out. Hence, we are left with:
+   \[
+   A = \frac{5}{3} - 1.
+   \]
+
+   Convert 1 to \(\frac{3}{3}\):
+   \[
+   A = \frac{5}{3} - \frac{3}{3} = \frac{2}{3}.
+   \]
+
+   Hence:
+   \[
+   A = \frac{2}{3}.
+   \]
+
+8. \textbf{We now evaluate the second bracket \(B\):}
+
+   Recall:
+   \[
+   B = 2^{\log_2(8)} + \frac{1}{2^3} - \prod_{k=1}^{8}\left(1 + \frac{1}{k}\right).
+   \]
+
+   First, simplify \(2^{\log_2(8)}\):
+   Since \(8=2^3\), \(\log_2(8)=3\). Thus:
+   \[
+   2^{\log_2(8)} = 2^3 = 8.
+   \]
+
+   Next, \(\frac{1}{2^3} = \frac{1}{8}\).
+
+   \bigskip
+
+   Now, we consider the product:
+   \[
+   \prod_{k=1}^{8}\left(1+\frac{1}{k}\right) = \prod_{k=1}^{8}\frac{k+1}{k}.
+   \]
+
+   Write out a few terms:
+   \[
+   = \frac{2}{1}\times\frac{3}{2}\times\frac{4}{3}\times\frac{5}{4}\times\frac{6}{5}\times\frac{7}{6}\times\frac{8}{7}\times\frac{9}{8}.
+   \]
+
+   Most terms cancel out in a telescoping manner:
+   \[
+   = \frac{9}{1} = 9.
+   \]
+
+   Therefore:
+   \[
+   B = 8 + \frac{1}{8} - 9.
+   \]
+
+   Combine \(8-9=-1\):
+   \[
+   B = -1 + \frac{1}{8}.
+   \]
+
+   Convert \(-1 = -\frac{8}{8}\):
+   \[
+   B = -\frac{8}{8} + \frac{1}{8} = -\frac{7}{8}.
+   \]
+
+   Thus:
+   \[
+   B = -\frac{7}{8}.
+   \]
+
+   \bigskip
+
+9. \textbf{We now multiply \(A\) and \(B\):}
+
+   We had found:
+   \[
+   A = \frac{2}{3}, \quad B = -\frac{7}{8}.
+   \]
+
+   Multiplying:
+   \[
+   A \times B = \frac{2}{3}\times\left(-\frac{7}{8}\right) = \frac{2\times(-7)}{3\times8} = \frac{-14}{24}.
+   \]
+
+   We then simplify by dividing numerator and denominator by 2:
+   \[
+   = \frac{-7}{12}.
+   \]
+
+   Therefore:
+   \[
+   \boxed{-\frac{7}{12}}.
+   \]
+
+
+   \bigskip
+
+   \subsection*{Mathematical concepts involved in Problem C...}
+   \begin{itemize}
+      \item \textbf{Manipulation of fractional expressions and simplification of factorial-based fractions.}
+      \item \textbf{Use of logarithm properties, such as \(2^{\log_2(8)} = 8\).}
+      \item \textbf{Telescoping products to simplify complex products into simpler fractions.}
+      \item \textbf{Careful handling of sums and products involving factorials and radicals.}
+   \end{itemize}
+   
+   \bigskip
+   \noindent\hrulefill
+   \begin{center}
+   \textbf{************* END OF SOLUTION: C *************}
+   \end{center}
+   \hrulefill
+   
+   \end{document}

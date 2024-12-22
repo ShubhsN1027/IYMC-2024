@@ -1,0 +1,149 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+% Set the header style
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{IYMC 2024 Qualification Round}
+\fancyhead[R]{Solution B}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Increase vertical space between header and text if needed
+\setlength{\headsep}{1cm}
+
+\begin{document}
+
+\title{Solution: Problem B}
+\date{}
+\maketitle
+\thispagestyle{fancy}
+
+
+\noindent\textbf{Given Problem:} Find all $x \in \mathbb{R}$ that solve the equation:
+\[
+x^4 + x^2 - x - 1 = 1 - x - x^2 - x^4.
+\]
+
+
+\subsection*{Deatiled solution for Problem B...}
+
+1. \textbf{We start with the given equation:}
+\[
+x^4 + x^2 - x - 1 = 1 - x - x^2 - x^4.
+\]
+
+2. \textbf{Bringing all the terms to one side:}  
+Subtract $(1 - x - x^2 - x^4)$ from both sides:
+\[
+x^4 + x^2 - x - 1 - (1 - x - x^2 - x^4) = 0.
+\]
+
+Distributing the minus sign:
+\[
+x^4 + x^2 - x - 1 - 1 + x + x^2 + x^4 = 0.
+\]
+
+3. \textbf{We then combine like terms:}
+- $x^4$ terms: $x^4 + x^4 = 2x^4$.
+- $x^2$ terms: $x^2 + x^2 = 2x^2$.
+- $x$ terms: $-x + x = 0$.
+- Constants: $-1 -1 = -2$.
+
+So we have:
+\[
+2x^4 + 2x^2 - 2 = 0.
+\]
+
+4. \textbf{Factoring out the common factor:}  
+Divide through by 2:
+\[
+x^4 + x^2 - 1 = 0.
+\]
+
+5. \textbf{We then use a substitution to solve the quartic:}  
+Let $y = x^2$. Then $y \geq 0$ for real $x$. Substitute:
+\[
+y^2 + y - 1 = 0.
+\]
+
+We have reduced to a quadratic equation in $y$.
+
+\bigskip
+
+6. \textbf{Now, we solve the quadratic equation in $y$:}
+
+\bigskip
+
+Using the quadratic formula for $ay^2+by+c=0$: $y=\frac{-b \pm \sqrt{b^2-4ac}}{2a}$.
+
+\bigskip
+
+Here, $a=1$, $b=1$, $c=-1$. Thus:
+\[
+y = \frac{-1 \pm \sqrt{1^2 -4(1)(-1)}}{2} = \frac{-1 \pm \sqrt{1+4}}{2} = \frac{-1 \pm \sqrt{5}}{2}.
+\]
+
+So:
+\[
+y_1 = \frac{-1 + \sqrt{5}}{2}, \quad y_2 = \frac{-1 - \sqrt{5}}{2}.
+\]
+
+\bigskip
+
+7. \textbf{We now need to check which $y$ is valid:}  
+Since $y=x^2 \geq 0$, discard negative solutions.
+
+Evaluate sign:
+- $\sqrt{5} \approx 2.236$, $-1+\sqrt{5}>0$, so $y_1 = \frac{-1+\sqrt{5}}{2}>0$.
+- $-1-\sqrt{5}<0$, so $y_2$ is negative.
+
+Discard $y_2$. Thus:
+\[
+y = \frac{-1 + \sqrt{5}}{2}.
+\]
+
+\bigskip
+
+8. \textbf{Find $x$:}  
+Since $y = x^2$, we have:
+\[
+x^2 = \frac{-1+\sqrt{5}}{2}.
+\]
+
+Take the square root (considering both positive and negative roots):
+\[
+x = \pm \sqrt{\frac{-1 + \sqrt{5}}{2}}.
+\]
+
+\bigskip
+
+9. \textbf{Final Solution:}
+\[
+\boxed{x = \pm \sqrt{\frac{-1 + \sqrt{5}}{2}}}.
+\]
+
+These are all the real solutions to the given equation.
+
+\bigskip
+\subsection*{Mathematical concepts involved in Problem B...}
+\begin{itemize}
+    \item \textbf{Combining and rearranging polynomial equations:} Moving all terms to one side to combine like terms and reduce the equation to a simpler form.
+    \item \textbf{Factorization and simplification:} Factoring out common factors to simplify the polynomial.
+    \item \textbf{Substitution method for quartic equations:} Using $y = x^2$ to convert a quartic equation in $x$ into a quadratic equation in $y$.
+    \item \textbf{Quadratic formula:} Applying the formula $y=\frac{-b \pm \sqrt{b^2-4ac}}{2a}$ to solve for $y$.
+    \item \textbf{Checking validity of roots:} Ensuring that the solutions for $y = x^2$ are nonnegative before taking the square root, which is crucial for identifying valid real solutions.
+    \item \textbf{Recognizing extraneous or invalid solutions:} Discarding negative results for $y$ since $y = x^2 \geq 0$.
+\end{itemize}
+
+\noindent\hrulefill
+\begin{center}
+\textbf{************* END OF SOLUTION: B *************}
+\end{center}
+\hrulefill
+
+\end{document}
